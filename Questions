@@ -1,0 +1,26 @@
+Why is your implementation optimal?
+- This implementation is optimal because I use a Hashmap and a Doubly Linked list allowing for O(1) get and put operations which is the most optimal. Using a brute force solution like an array would require O(n) time for retrieval. 
+
+What language choice would you use in prod? Why?
+- In production, the language choice would depend on the overall goals of the project. I used Java, which has automatic garbage collection and memory management which avoids memory leaks. The most practical alternatives to Java would be Python and C++. Python is better in terms of readably and simplicity but has a slower execution speed than java. Python is an interpreted language so the code is executed line by line. Compiled languages, like Java and C++ compile the code into machine code before execution, which can be run directly by the computer's hardware, which is faster. C++ is another alternative that has a faster execution time and better memory management than java, but you need to manually moderate memory to avoid memory leaks. 
+
+Why would this be useful in practice? 
+- LRUs are practical because it maximizes the use of available memory, making sure that only the most relevant data is stored. This is important when memory resources are limited. It allows for faster access to frequently and recently used data which is better than trying to look for these things in all of memory. 
+
+
+- This can also be used in operating systems where the size of the on chip memory is much smaller than the size of off chip memory. Accessing on chip memory is quicker than accessing off chip memory, so using and LRU in this context would be very efficient if the cache data is represented on the on-chip memory
+
+Why do you suspect we would care about this?
+- This cache could be used in web browsers to store recently visited web pages instead of generating them from the internet every time. LRU caching would be particularly useful in databases to speed up data retrieval. It would ensure that data that is frequently queried is kept which less frequently accessed data is removed. It can also be used in the finance space for real-time analytics. It can be used to keep the most recent and relevant financial data in memory for quick analysis, like stock prices.
+
+What would be your testing strategy?
+- My testing strategy would first be to ensure that put, get, and remove all work properly, as they are integral to the implementation. Also, as I’ve done in the code, I would test for trying to retrieve a key that doesn’t exist which should return -1. I also test for adding when the cache is full which should remove the least recently used item, which is the tail.
+
+What concerns would there be about using this algorithm in practice?
+- The space complexity of this algorithm could be higher than others that only use one data structure, since this LRU implementation requires two. Additionally, just because an item hasn’t been accessed recently, that wouldn’t necessarily meant that the data isn’t important. 
+
+How would you evaluate your choices in practice (on the job)
+- Depends on the nature of the problem and the nature the data. LRU would be ideal when recently accessed data has a high likelihood of constantly being accessed. An algorithm like LFU on the other hand would be used when frequently accessed data is valuable regardless of how recently it has been accessed. Depends on what determines the volubility of the data
+
+THE USE OF DUMMY HEAD AND TAIL
+By using dummy head and tail nodes, you avoid having to write special cases for inserting or removing nodes at the beginning or end of the list. Without dummy nodes, you would need to check if the list is empty, or if you're inserting at the head or tail, and handle those cases differently.
